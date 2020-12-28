@@ -15,10 +15,7 @@ const refs = {
   countriesOutput: document.querySelector('#countries-output')
 }
 
-refs.countriesInput.addEventListener('input', debounce(event => {
-  event.preventDefault();
-  handleTextareaInput(event);
-}, 500));
+refs.countriesInput.addEventListener('input', debounce(handleTextareaInput, 500));
 
 function handleTextareaInput(e) {
   const searchText = e.target.value;
@@ -30,12 +27,15 @@ function handleTextareaInput(e) {
     }
     else if (result.length === 1) {
       const markup = itemsTemplate(result);
-      refs.countriesOutput.insertAdjacentHTML('beforeend', markup);
+      refs.countriesOutput.innerHTML=`${markup}`;
       return;
     }
-    
-    refs.countriesOutput.insertAdjacentHTML('beforeend', result.map(el => `<li> ${el.name}</li>`).join(''));
+    const list = result.map(el => `<li> ${el.name}</li>`).join('');
+    refs.countriesOutput.innerHTML=`${list}`;
 
   })
-    .catch(result => toastr["error"]('Country with this name not found'));
+    .catch(result => {
+      toastr["error"]('Country with this name not found');
+      refs.countriesOutput.innerHTML = ``;
+    });
   }

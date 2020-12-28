@@ -12,11 +12,13 @@
         Population: {{population}}
       </p>
 
-      <ul class="languages__list">
-        {{#each languages.name}}
-        <li class="languages__item">{{this}}</li>
+
+      <p class="languages">
+        languages:
+        {{#each languages}}
+        {{this.name}}
         {{/each}}
-      </ul>
+      </p>
     </div>
 
   </article>

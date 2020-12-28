@@ -28,7 +28,7 @@ h1 {
 .input {
   font-weight: 400;
   font-size: 14px;
-  width: auto;
+  width: 400px;
 }
 
 .card img {
@@ -63,7 +63,7 @@ h1 {
 
 .capital,
 .population,
-.languages__list {
+.languages {
   line-height: 1.5;
   margin-top: 24px;
   font-size: 20px;
